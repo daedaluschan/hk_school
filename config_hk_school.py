@@ -5,6 +5,10 @@
 school_list_url = 'http://kgp2015.highlight.hk/website/school.php'
 school_info_url = 'http://kgp2015.highlight.hk/website/schoolinfo.php?schid='
 
+###############################################################################################
 # input the proxy host / port in the format of:
 # proxies = {'<http|https>': '<host>:<port>'}
+# if no proxy is needed just put: 
+# proxies = {}
+###############################################################################################
 proxies = {}
