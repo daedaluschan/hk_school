@@ -18,5 +18,5 @@ http://kgp2015.highlight.hk/website/schoolinfo.php?schid=6440
 
 * 我未試過起 Python 2.X environment 上面 run 過，但係我都 99% sure 係唔會 work 嘅(因為冇做中文 UTF-8 嘅轉換)，所以請用 Python 3.X version。
 * 跟住照住 requirement.txt 裝返所有 depending module。如果用 pip 的話： > pip install -r requirements.txt
-* 如果用 jupyther notebook 的話只要行哂 school_web_scrap.ipynb 裡面啲 cell 就得；如果用 command prompt： > python school_web_scrap.py
+* 如果用 jupyther notebook 的話只要行哂 school_web_scrap.ipynb 裡面啲 cell 就得；如果用 command prompt： > python main.py
 * 應該 5 分鐘內可以行完，個 csv file 會 save 咗起同一個 directory 度。留意返  csv 嘅 deliminator 係「|」 ，唔係「，」。
