@@ -184,6 +184,8 @@ def constructSchoolDF():
             bar.update(idx + 1)
             # clear_output()
 
+        bar.finish()
+
     df_schoolInfo = df(schoolInfoData).reindex(columns=['school_id', 'district', 'school_name', 'school_addr', 'school_tel', 'school_fax', 'school_year', 'voucher',
                                               'school_cat', 'student_cat', 'supervisor', 'principal', 'found_year', 'accomodation', 'num_of_classrm', 'outdoor_playground',
                                               'indoor_playground', 'music_rm', 'other_rm', 'num_of_teacher', 'website', 'quality_review_result', 'quality_review_report',
