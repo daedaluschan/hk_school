@@ -6,7 +6,7 @@ from lxml import etree
 from lxml import html
 
 from pandas import DataFrame as df
-from IPython.display import clear_output
+import progressbar
 
 from config_hk_school import *
 
@@ -175,10 +175,14 @@ def constructSchoolDF():
     school_id_list = getSchoolIdList()
     schoolInfoData = []
 
-    for idx, school_id in enumerate(school_id_list[150:155]):
-        print('processing school #' + (idx + 1).__str__() + '. school ID: ' + school_id.__str__())
-        schoolInfoData.append(getSchoolInfo(school_id))
-        clear_output()
+    num_of_id = len(school_id_list)
+
+    with progressbar.ProgressBar(max_value=num_of_id) as bar:
+        for idx, school_id in enumerate(school_id_list):
+            # print('processing school #' + (idx + 1).__str__() + '. school ID: ' + school_id.__str__())
+            schoolInfoData.append(getSchoolInfo(school_id))
+            bar.update(idx + 1)
+            # clear_output()
 
     df_schoolInfo = df(schoolInfoData).reindex(columns=['school_id', 'district', 'school_name', 'school_addr', 'school_tel', 'school_fax', 'school_year', 'voucher',
                                               'school_cat', 'student_cat', 'supervisor', 'principal', 'found_year', 'accomodation', 'num_of_classrm', 'outdoor_playground',
