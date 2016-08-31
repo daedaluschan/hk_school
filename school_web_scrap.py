@@ -38,6 +38,8 @@ def getSchoolInfo(school_id):
 
     basicInfoNode = tree.xpath('//table[@class=\'font_content_schoolinfo\']')
     school_name = basicInfoNode[0].getchildren()[0].getchildren()[0].text.strip()
+    school_name_eng = basicInfoNode[0].getchildren()[0].getchildren()[0].getchildren()[0].tail.strip()
+    # print('eng name: ' + school_name_eng)
     school_addr = basicInfoNode[0].getchildren()[2].getchildren()[1].text.strip()
     school_tel = basicInfoNode[0].getchildren()[4].getchildren()[1].text.strip()
     school_fax = basicInfoNode[0].getchildren()[6].getchildren()[1].text.strip()
@@ -146,8 +148,8 @@ def getSchoolInfo(school_id):
     reg_fee_hd = moreInfoNode[18].getchildren()[2].getchildren()[2].text.strip()
     reg_fee_wd = moreInfoNode[18].getchildren()[3].getchildren()[1].text.strip()
 
-    schoolInfo = {'school_id': school_id, 'district' : district, 'school_name': school_name, 'school_addr': school_addr, 'school_tel': school_tel,
-                  'school_fax': school_fax,
+    schoolInfo = {'school_id': school_id, 'district' : district, 'school_name': school_name, 'school_name_eng': school_name_eng,
+                  'school_addr': school_addr, 'school_tel': school_tel, 'school_fax': school_fax,
                   'school_year': school_year, 'voucher': voucher, 'school_cat': school_cat, 'student_cat': student_cat, 'supervisor': supervisor,
                   'principal': principal, 'found_year': found_year, 'accomodation': accomodation, 'num_of_classrm': num_of_classrm,
                   'outdoor_playground': outdoor_playground, 'indoor_playground': indoor_playground, 'music_rm': music_rm,
@@ -186,7 +188,7 @@ def constructSchoolDF():
 
         bar.finish()
 
-    df_schoolInfo = df(schoolInfoData).reindex(columns=['school_id', 'district', 'school_name', 'school_addr', 'school_tel', 'school_fax', 'school_year', 'voucher',
+    df_schoolInfo = df(schoolInfoData).reindex(columns=['school_id', 'district', 'school_name', 'school_name_eng', 'school_addr', 'school_tel', 'school_fax', 'school_year', 'voucher',
                                               'school_cat', 'student_cat', 'supervisor', 'principal', 'found_year', 'accomodation', 'num_of_classrm', 'outdoor_playground',
                                               'indoor_playground', 'music_rm', 'other_rm', 'num_of_teacher', 'website', 'quality_review_result', 'quality_review_report',
                                               'degree_holder', 'non_degree_holder', 'ece_cert', 'kg_teacher', 'other_teacher_training', 'asist_kg_teacher', 'other_qual',
@@ -198,7 +200,7 @@ def constructSchoolDF():
                                               'extend_hour', 'curriculum', 'summer_uni', 'winter_uni', 'txt_book', 'exe_book', 'school_bag', 'snack', 'app_form',
                                                'app_period', 'app_fee', 'reg_fee_hd', 'reg_fee_wd'])
 
-    df_schoolInfo.columns = ['school_id', '地區', '學校名稱', '地址', '電話', 'FAX', '學年', '學券資格', '學校類別',
+    df_schoolInfo.columns = ['school_id', '地區', '學校名稱', '學校英文名稱', '地址', '電話', 'FAX', '學年', '學券資格', '學校類別',
                              '學生類別', '校監', '校長', '創校年份', '課室的總容額', '課室數目', '戶外遊戲場地',
                              '室內遊戲場地', '音樂室', '其他特別室', '教學人員總人數', 'website', '質素評核結果', '質素評核報告',
                              '持有學位教員', '非持有學位教員', '幼兒教育證書教員', '幼稚園教師教員', '其他師資訓練教員', '助理幼稚園教師教員', '其他教員',
