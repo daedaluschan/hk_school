@@ -10,9 +10,13 @@
 
 其實都係起下面果兩條 URL 做 web scrapping 。節一條 link 係拎哂條 full list 同埋個 ID，而第二條 link 就係用返個 ID 去 extract 啲學校資料。
 
-http://kgp2015.highlight.hk/website/school.php
+~~http://kgp2015.highlight.hk/website/school.php~~
 
-http://kgp2015.highlight.hk/website/schoolinfo.php?schid=6440
+~~http://kgp2015.highlight.hk/website/schoolinfo.php?schid=6440~~
+
+http://kgp2016.highlight.hk/web/school.php
+
+http://kgp2016.highlight.hk/web/schoolinfo.php?schid=6440
 
 ## 用法
 
